@@ -1,8 +1,22 @@
+from colorama import Fore, Style
+
 def draw_board(board):
     # создание игрового поля
     for i in range(3):
-        print('|'.join(board[i]))
+        row = []
+        for cell in board[i]:
+            if cell == "X":
+                row.append(Fore.GREEN + cell)
+            elif cell == "O":
+                row.append(Fore.BLUE + cell)
+            else:
+                row.append(Fore.WHITE + cell)
+        print('|'.join(row))
         print('------')
+
+def reset_color():
+    print(Style.RESET_ALL)
+    #сброс текущего цвета
 
 
 def ask_and_make_move(player, board):
